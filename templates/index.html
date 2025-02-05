@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AI Task Manager</title>
+</head>
+<body>
+    <h1>Smart Task Manager</h1>
+
+    <form method="POST" action="/add">
+        <input type="text" name="content" placeholder="New task" required>
+        <button type="submit">Add Task</button>
+    </form>
+
+    <ul>
+        {% for task in tasks %}
+        <li>
+            {{ task.content }}
+            <span style="color: {% if task.priority == 1 %}green{% elif task.priority == 2 %}orange{% else %}red{% endif %}">
+                (Priority: {{ task.priority }})
+            </span>
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
